@@ -1,0 +1,1 @@
+This sample application demonstrates bad behaviour (the grid refreshes every time a field in the edit model is modified) when editing data that is bound via a HTTP service. Specifically, this occurs when the GridDevExtremeDataSource object is assigned to the DxGrid Data property as the return object from a method call.
