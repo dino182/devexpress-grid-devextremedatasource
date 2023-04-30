@@ -1,7 +1,7 @@
 ﻿@page "/"
 @inject HttpClient _httpClient;
 
-<DxGrid Data="@_data"
+<DxGrid Data="@GetDataSource()"
         KeyFieldName="@nameof(Product.Id)">
     <Columns>
         <DxGridDataColumn FieldName="@nameof(Product.Name)" Caption="Name" />
@@ -29,10 +29,8 @@
 
 @code
 {
-    private GridDevExtremeDataSource<Product> _data;
-
-    protected override void OnInitialized()
+    private GridDevExtremeDataSource<Product> GetDataSource()
     {
-        _data = new GridDevExtremeDataSource<Product>(_httpClient.GetStreamAsync, new Uri("https://localhost:7167/api/product"));
+        return new GridDevExtremeDataSource<Product>(_httpClient.GetStreamAsync, new Uri("https://localhost:7167/api/product"));
     }
 }
